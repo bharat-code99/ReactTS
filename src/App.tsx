@@ -1,10 +1,21 @@
+import { useState } from "react";
+import Dashboard from "./assets/Dashboard";
+import { DashboardContext } from "./context";
 
-
-function App() {
-
-  return (
-    <h1 className="text-center mt-10 text-4xl text-gray-800 font-semibold">React with Typescript</h1>
-  )
+export interface User{
+  isSubscribed: boolean;
+  name: string;
 }
 
-export default App
+export default function App(){
+  const [user] = useState<User>({
+    isSubscribed: true,
+    name: 'Bharat',
+  });
+
+  return(
+    <DashboardContext.Provider value={user}>
+      <Dashboard />
+    </DashboardContext.Provider>
+  )
+}
